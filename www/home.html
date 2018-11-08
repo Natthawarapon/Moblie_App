@@ -25,6 +25,10 @@ font-family: 'K2D', sans-serif;
       color: black;
    
     }
+    .page, .page__background, .page__content {
+    background-color:#F8F8FF;
+    position: absolute;
+}
   </style>
   
 <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
@@ -60,7 +64,7 @@ db.settings({
       </div>
       <div class="center" id="appname">#</div>
       <div class="right">
-        <ons-icon class="toolbaricon" size="30px" icon="fa-sign-out" onclick="window.location.href='logout.html'">
+        <ons-icon class="toolbaricon" size="30px" icon="fa-sign-out" onclick="logout()">
         </ons-icon>
       </div>
     </ons-toolbar>
@@ -410,5 +414,30 @@ console.log("title_pro",title);
          var html = ejs.render(allP_template, { allProduct : title });
         $('#allProduct').html(html);
  }
+
+ //=====================================================================================================
+ function logout() {
+             firebase.auth().signOut().then(function () {
+            // Sign-out successful.
+            ons.notification.alert('See u again soon');
+            window.location.href = 'login.html';
+        }).catch(function (error) {
+            // An error happened.
+
+        });
+        }
+  //===========================================================================
+//   function deleteitem(item) {
+//   console.log(i);
+//   console.log(dataCart);
+  
+//   var deleteitem= dataCart.splice(item,1)
+//    ons.notification.toast("สินค้าถูกลบเรียบร้อยเเล้ว", {
+//     timeout: 2000
+//   });
+//   $("#Fillbadge").attr('badge', dataCart.length);
+//   showAdd()
+// }
+// var price = 0;
 </script>
 </html>
